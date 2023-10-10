@@ -1,7 +1,8 @@
 import './App.css';
 import TableView from "./layouts/tableView/TableView";
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import FormNewItem from "./layouts/formNewItem/FormNewItem";
+import axios from "axios";
 //useState - хук, который принимает изначальное состояние объекта и возвращает массив из двух значений:текущее значение и функцию,меняющую это набор данных
 
 //Базовый компонент
@@ -9,15 +10,26 @@ function App() {
 
     //внедрили хук, позволяющий отслеживать состояние массива.
     //это нужно для того, чтобы были видны новые добавленные читатели при нажатии кнопки добавления
-    const [items, setItems] = useState(
-        [{
-            id: 10,
-            name: "Name",
-            lastName: "Last Name",
-            birthday: "2000-02-20",
-            email: "aaa@mail.ru"
-        }]
-    );
+    const [items, setItems] = useState([]);
+
+    useEffect(() => {
+        axios.get('http://localhost:7070/reader/all?offset=3&limit=5&sort=BIRTHDAY_DESC')
+            .then(res => {
+                const data = [];
+
+                res.data.content.forEach(item => {
+                    data.push({
+                            name: item.name,
+                            lastName: item.lastName,
+                            birthday: item.birthday,
+                            email: item.email
+                        }
+                    )
+                })
+                setItems(data);
+            })
+    }, [])
+
 
     const appendReader = (name, lastName, birthday, email) => {
         const currentId = 0;
