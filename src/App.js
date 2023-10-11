@@ -3,8 +3,9 @@ import TableView from "./layouts/tableView/TableView";
 import React, {useState, useEffect} from "react";
 import FormNewItem from "./layouts/formNewItem/FormNewItem";
 import axios from "axios";
+import ReaderComponent from "./components/ReaderComponent";
 //useState - хук, который принимает изначальное состояние объекта и возвращает массив из двух значений:текущее значение и функцию,меняющую это набор данных
-
+//useEffect помогает выполнять побочные действия в функциональном компоненте
 //Базовый компонент
 function App() {
 
@@ -12,33 +13,29 @@ function App() {
     //это нужно для того, чтобы были видны новые добавленные читатели при нажатии кнопки добавления
     const [items, setItems] = useState([]);
 
-    useEffect(() => {
-        axios.get('http://localhost:7070/reader/all?offset=3&limit=5&sort=BIRTHDAY_DESC')
-            .then(res => {
-                const data = [];
+    // useEffect(() => {
+    //     axios.get('http://localhost:7070/test-reader/all')
+    //         .then(res => {
+    //             const data = [];
+    //
+    //             res.data.forEach(item => {
+    //                 data.push(
+    //                     {
+    //                         name: item.name,
+    //                         lastName: item.lastName
+    //                     }
+    //                 )
+    //             })
+    //             setItems(data);
+    //         })
+    // }, []);
 
-                res.data.content.forEach(item => {
-                    data.push({
-                            name: item.name,
-                            lastName: item.lastName,
-                            birthday: item.birthday,
-                            email: item.email
-                        }
-                    )
-                })
-                setItems(data);
-            })
-    }, [])
-
-
-    const appendReader = (name, lastName, birthday, email) => {
+    const appendReader = (name, lastName) => {
         const currentId = 0;
         const temp = {
             id: currentId,
             name: name,
             lastName: lastName,
-            birthday: birthday,
-            email: email
         };
         setItems([...items, temp])
     }
@@ -54,8 +51,9 @@ function App() {
                     <h1>Список читателей библиотеки</h1>
                 </div>
                 <div className='card-body'>
-                    <TableView data={items} removeReader={removeReader}/>
-                    <FormNewItem appendReader={appendReader}/>
+                    {/*<TableView data={items} removeReader={removeReader}/>*/}
+                    {/*<FormNewItem appendReader={appendReader}/>*/}
+                    <ReaderComponent />
                 </div>
             </div>
         </div>

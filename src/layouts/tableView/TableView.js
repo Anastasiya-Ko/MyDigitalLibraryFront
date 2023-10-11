@@ -11,8 +11,6 @@ const TableView = (props) => {
                 <th scope='col'>№</th>
                 <th scope='col'>Имя</th>
                 <th scope='col'>Фамилия</th>
-                <th scope='col'>День рождения</th>
-                <th scope='col'>Адрес электронной почты</th>
             </tr>
             </thead>
             <tbody>

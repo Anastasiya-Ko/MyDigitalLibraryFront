@@ -4,20 +4,15 @@ const FormNewItem = (props) => {
 
     const [name, setName] = useState(' ');
     const [lastName, setLastName] = useState(' ');
-    const [birthday, setBirthday] = useState(' ');
-    const [email, setEmail] = useState(' ');
 
     const submit = () => {
 
-      if (name.trim() === '' || lastName.trim() === '' || birthday.trim() === '') return;
+      if (name.trim() === '' || lastName.trim() === '') return;
 
-      props.appendReader(name, lastName, birthday, email);
+      props.appendReader(name, lastName);
 
       setName('');
       setLastName('');
-      setBirthday('');
-      setEmail('');
-
     }
 
     return (
@@ -39,24 +34,6 @@ const FormNewItem = (props) => {
                         type='text'
                         value={lastName}
                         onChange={(e) => setLastName(e.target.value)}
-                    />
-                </div>
-                <div className="mb-3">
-                    <label className='from-label'>День рождения</label>
-                    <input
-                        className='form-control'
-                        type='text'
-                        value={birthday}
-                        onChange={(e) => setBirthday(e.target.value)}
-                    />
-                </div>
-                <div className="mb-3">
-                    <label className='from-label'>Электронная почта</label>
-                    <input
-                        className='form-control'
-                        type='text'
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
                     />
                 </div>
                 <div>

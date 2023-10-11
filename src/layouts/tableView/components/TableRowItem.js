@@ -8,8 +8,6 @@ const TableRowItem = (props) => {
             <th scope='row'>{ props.reader.id }</th>
             <th>{ props.reader.name }</th>
             <th>{ props.reader.lastName }</th>
-            <th>{ props.reader.birthday }</th>
-            <th>{ props.reader.email }</th>
         </tr>
     );
 }
