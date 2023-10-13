@@ -1,12 +1,29 @@
 import axios from "axios";
 
-const READER_REST_API_URL = 'http://localhost:7070/test-reader/all';
+const ALL_READERS_URL = 'http://localhost:7070/reader/all';
 
 class ReaderService {
 
-    getReader() {
-        return axios.get(READER_REST_API_URL);
+    getReaders() {
+        return axios.get(ALL_READERS_URL);
     }
+
+    /*
+    *  createEmployee(employee){
+        return axios.post(EMPLOYEE_BASE_REST_API_URL, employee)
+    }
+
+    getEmployeeById(employeeId){
+        return axios.get(EMPLOYEE_BASE_REST_API_URL + '/' + employeeId);
+    }
+
+    updateEmployee(employeeId, employee){
+        return axios.put(EMPLOYEE_BASE_REST_API_URL + '/' +employeeId, employee);
+    }
+
+    deleteEmployee(employeeId){
+        return axios.delete(EMPLOYEE_BASE_REST_API_URL + '/' + employeeId);
+    }*/
 }
 
 export default new ReaderService();

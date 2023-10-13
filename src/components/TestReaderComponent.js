@@ -1,7 +1,7 @@
 import React from "react";
-import ReaderService from "../services/ReaderService";
+import TestReaderService from "../services/TestReaderService";
 
-class ReaderComponent extends React.Component {
+class TestReaderComponent extends React.Component {
     constructor(props) {
         super(props);
 
@@ -11,7 +11,7 @@ class ReaderComponent extends React.Component {
     }
 
     componentDidMount() {
-        ReaderService.getReaders().then((response) => {
+        TestReaderService.getReader().then((response) => {
             this.setState({readers: response.data})
         });
     }
@@ -25,9 +25,6 @@ class ReaderComponent extends React.Component {
                         <th scope='col'>№</th>
                         <th scope='col'>Имя</th>
                         <th scope='col'>Фамилия</th>
-                        <th scope='col'>Возраст</th>
-                        <th scope='col'>Дата рождения</th>
-                        <th scope='col'>Электронная почта</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -35,13 +32,9 @@ class ReaderComponent extends React.Component {
                         this.state.readers.map(
                             reader =>
                                 <tr key={reader.id}>
-                                    <td>{reader.id}</td>
-                                    <td>{reader.firstName}</td>
-                                    <td>{reader.lastName}</td>
-                                    <td>{reader.gender}</td>
-                                    <td>{reader.age}</td>
-                                    <td>{reader.birthday}</td>
-                                    <td>{reader.email}</td>
+                                    <td>{ reader.id }</td>
+                                    <td>{ reader.name }</td>
+                                    <td>{ reader.lastName }</td>
                                 </tr>
                         )
                     }
@@ -52,6 +45,4 @@ class ReaderComponent extends React.Component {
     }
 }
 
-export default ReaderComponent;
-
-
+export default TestReaderComponent;

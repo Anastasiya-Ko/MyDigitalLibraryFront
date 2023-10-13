@@ -1,17 +1,15 @@
 import './App.css';
-import TableView from "./layouts/tableView/TableView";
-import React, {useState, useEffect} from "react";
-import FormNewItem from "./layouts/formNewItem/FormNewItem";
-import axios from "axios";
+//import React, {useState} from "react";
 import ReaderComponent from "./components/ReaderComponent";
+
 //useState - хук, который принимает изначальное состояние объекта и возвращает массив из двух значений:текущее значение и функцию,меняющую это набор данных
-//useEffect помогает выполнять побочные действия в функциональном компоненте
+//useEffect - чук, который помогает выполнять побочные действия в функциональном компоненте
 //Базовый компонент
 function App() {
 
     //внедрили хук, позволяющий отслеживать состояние массива.
     //это нужно для того, чтобы были видны новые добавленные читатели при нажатии кнопки добавления
-    const [items, setItems] = useState([]);
+   // const [items, setItems] = useState([]);
 
     // useEffect(() => {
     //     axios.get('http://localhost:7070/test-reader/all')
@@ -30,19 +28,19 @@ function App() {
     //         })
     // }, []);
 
-    const appendReader = (name, lastName) => {
-        const currentId = 0;
-        const temp = {
-            id: currentId,
-            name: name,
-            lastName: lastName,
-        };
-        setItems([...items, temp])
-    }
-
-    const removeReader = (id) => {
-        setItems(items.filter(item => item.id !== id))
-    }
+    // const appendReader = (name, lastName) => {
+    //     const currentId = 0;
+    //     const temp = {
+    //         id: currentId,
+    //         name: name,
+    //         lastName: lastName,
+    //     };
+    //     setItems([...items, temp])
+    // }
+    //
+    // const removeReader = (id) => {
+    //     setItems(items.filter(item => item.id !== id))
+    // }
 
     return (
         <div className='container mt-5'>
@@ -58,6 +56,8 @@ function App() {
             </div>
         </div>
     );
+
+
 }
 
 export default App;
